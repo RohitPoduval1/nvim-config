@@ -9,4 +9,9 @@ return {
 		priority = 1000,
 		name = "catppuccin",
 	},
+	{
+		"folke/tokyonight.nvim",
+		priority = 1000,
+		name = "tokyonight",
+	},
 }
