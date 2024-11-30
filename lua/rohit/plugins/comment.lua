@@ -13,7 +13,12 @@ return {
     -- enable comment
     comment.setup({
       -- for commenting tsx, jsx, svelte, html files
-      pre_hook = ts_context_commentstring.create_pre_hook(),
+        opleader = {
+        ---Line-comment keymap
+        line = 'gc',
+        ---Block-comment keymap
+        block = 'cb',
+    },
     })
   end,
 }
