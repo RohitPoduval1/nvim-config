@@ -12,13 +12,21 @@ return {
 
     -- enable comment
     comment.setup({
-      -- for commenting tsx, jsx, svelte, html files
+        -- NORMAL mode keymaps
+        toggler = {
+            ---Line-comment toggle keymap
+            line = 'cc',
+            ---Block-comment toggle keymap
+            block = 'bc',
+        },
+
+        -- VISUAL mode keymaps
         opleader = {
-        ---Line-comment keymap
-        line = 'gc',
-        ---Block-comment keymap
-        block = 'cb',
-    },
+            ---Line-comment keymap
+            line = 'cc',  -- (c)omment (l)ine
+            ---Block-comment keymap
+            block = 'cb',  -- (c)omment (b)lock 
+        },
     })
   end,
 }
