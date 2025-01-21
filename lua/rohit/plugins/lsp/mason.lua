@@ -27,18 +27,19 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				"lua_ls",
-				"pyright",
-                "ocamllsp",
+				"lua_ls",    -- For Lua
+				"pyright",   -- For Python
+                "ocamllsp",  -- For OCaml
+                "clangd",    -- For C/C++
 			},
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"isort", -- python formatter
-				"black", -- python formatter
+				"prettier",
+				"stylua",    -- Lua formatter
+				"isort",     -- Python formatter
+				"black",     -- Python formatter
 				"pylint",
 			},
 		})
