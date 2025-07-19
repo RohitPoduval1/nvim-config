@@ -1,18 +1,12 @@
 return {
 	"williamboman/mason.nvim",
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
 		-- import mason
 		local mason = require("mason")
-
-		-- import mason-lspconfig
-		local mason_lspconfig = require("mason-lspconfig")
-
-		local mason_tool_installer = require("mason-tool-installer")
-
+		
 		-- enable mason and configure icons
 		mason.setup({
 			ui = {
@@ -23,21 +17,23 @@ return {
 				},
 			},
 		})
-
-		mason_lspconfig.setup({
-			-- list of servers for mason to install
-			ensure_installed = {
-				"lua_ls",    -- For Lua
-				"pyright",   -- For Python
-                "ocamllsp",  -- For OCaml
-                "clangd",    -- For C/C++
-			},
-		})
-
+		
+		-- Use mason-tool-installer to install LSP servers instead of mason-lspconfig
+		-- This avoids the automatic_enable conflict entirely
+		
+		local mason_tool_installer = require("mason-tool-installer")
 		mason_tool_installer.setup({
 			ensure_installed = {
+				-- LSP servers
+				"pyright",   -- Python LSP
+				"clangd",    -- C/C++ LSP
+				"html-lsp",  -- HTML
+				"typescript-language-server",    -- JavaScript/TypeScript
+
+
+				-- Formatters and linters
 				"prettier",
-				"stylua",    -- Lua formatter
+				-- "stylua",    -- Lua formatter
 				"isort",     -- Python formatter
 				"black",     -- Python formatter
 				"pylint",
